@@ -14,6 +14,9 @@ Create a POJO to encapsulate the validation request:
 include::{sourceDir}/vies-vat-validator/src/main/java/example/micronaut/VatValidationRequest.java[]
 ----
 
+Note: While testing using inmutable POJOS ( without default empty constructors and no setters) we need to add @JsonCreator and @JsonProperty to our request / response objects so Jackson can map properly the constructors.  Otherwise there will be failures.
+A simple alternative is also just adding an empty constructor 
+
 And another POJO to encapsulate the expected response. Note: we add a `Boolean valid` property.
 
 [source,json]
@@ -30,3 +33,4 @@ And another POJO to encapsulate the expected response. Note: we add a `Boolean v
 ----
 include::{sourceDir}/vies-vat-validator/src/main/java/example/micronaut/VatValidation.java[]
 ----
+
